@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Saia do Raso — Mentoria Individual para mulheres que desejam viver o profundo em Deus">
+<meta property="og:title" content="Saia do Raso — Viva o Profundo em Deus">
+<meta property="og:description" content="Mentoria individual online ao vivo. 10 encontros. Identidade restaurada, presença de Deus como lar.">
+<meta name="theme-color" content="#1e0a14">
+<title>Saia do Raso — Viva o Profundo em Deus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --burgundy:    #1e0a14;
+  --burg-mid:    #3a1828;
+  --rose:        #a8446e;
+  --rose-light:  #c47fa0;
+  --rose-pale:   #edd5e4;
+  --blush:       #fdf4f8;
+  --blush-deep:  #f7eaf2;
+  --text-body:   #4a2838;
+  --text-muted:  #8a5070;
+  --gold:        #c9a05a;
+  --gold-light:  #e8cfa0;
+  --white:       #ffffff;
+  --ff-serif:    'Cormorant Garamond', Georgia, serif;
+  --ff-sans:     'Lato', system-ui, sans-serif;
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --ease: 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--ff-sans);
+  background: #130610;
+  color: var(--text-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.page {
+  max-width: 540px;
+  margin: 0 auto;
+  background: var(--white);
+  min-height: 100vh;
+}
+
+/* ── HERO ─────────────────────────────────────── */
+.hero {
+  position: relative;
+  background: var(--burgundy);
+  overflow: hidden;
+  padding: 4rem 1.75rem 3rem;
+  text-align: center;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.5;
+}
+.orb { position: absolute; border-radius: 50%; pointer-events: none; }
+.orb-1 { width:320px;height:320px; background:radial-gradient(circle,rgba(168,68,110,0.38) 0%,transparent 68%); top:-100px;right:-90px; }
+.orb-2 { width:200px;height:200px; background:radial-gradient(circle,rgba(201,160,90,0.14) 0%,transparent 68%); bottom:-70px;left:-55px; }
+.orb-3 { width:160px;height:160px; background:radial-gradient(circle,rgba(196,127,160,0.18) 0%,transparent 68%); top:35%;left:50%;transform:translate(-50%,-50%); }
+
+.hero-inner { position:relative; z-index:1; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(201,160,90,0.1);
+  border: 1px solid rgba(201,160,90,0.28);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1.75rem;
+}
+.hero-badge i { font-size: 12px; color: var(--gold); }
+
+.ornament {
+  display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:1.25rem;
+}
+.ornament span { height:1px; width:44px; }
+.ornament span:first-child { background:linear-gradient(90deg,transparent,rgba(201,160,90,0.45)); }
+.ornament span:last-child  { background:linear-gradient(90deg,rgba(201,160,90,0.45),transparent); }
+.ornament i { font-size:13px; color:var(--gold); opacity:.75; }
+
+.hero-title {
+  font-family: var(--ff-serif);
+  font-size: clamp(2.8rem, 11vw, 3.5rem);
+  font-weight: 300;
+  color: #f8eef4;
+  line-height: 1.05;
+  letter-spacing: -.5px;
+  margin-bottom: .55rem;
+}
+.hero-sub {
+  font-family: var(--ff-serif);
+  font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--rose-light);
+  letter-spacing: .4px;
+  margin-bottom: 1.75rem;
+}
+
+.hero-div {
+  display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:1.5rem;
+}
+.hero-div span { width:34px; height:1px; background:rgba(196,127,160,.3); }
+.hero-div i { font-size:14px; color:var(--rose-light); opacity:.65; }
+
+.hero-tagline {
+  font-size: 14.5px;
+  font-weight: 300;
+  color: rgba(240,210,228,.78);
+  line-height: 1.8;
+  max-width: 295px;
+  margin: 0 auto;
+}
+.hero-tagline strong { color:#f0c0d8; font-weight:400; }
+
+/* ── STATS ───────────────────────────────────── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  background: var(--burg-mid);
+  border-bottom: 1px solid rgba(201,160,90,.18);
+}
+.stat {
+  padding: 1.1rem .4rem;
+  text-align: center;
+  border-right: 1px solid rgba(201,160,90,.12);
+}
+.stat:last-child { border-right:none; }
+.stat-icon { font-size:16px; color:var(--gold); display:block; margin-bottom:5px; opacity:.82; }
+.stat-num {
+  font-family: var(--ff-sans);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: rgba(248,238,244,0.9);
+  line-height: 1;
+  display: block;
+  letter-spacing: 0.5px;
+}
+.stat-num sup {
+  font-family: var(--ff-sans);
+  font-size: .5rem;
+  font-weight: 300;
+  vertical-align: super;
+  letter-spacing: 0.5px;
+}
+.stat-lbl {
+  font-size: 8.5px;
+  color: rgba(196,127,160,.7);
+  letter-spacing: .3px;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 3px;
+  line-height: 1.3;
+}
+
+/* ── SECTION ─────────────────────────────────── */
+.sec-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1.75rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--rose-pale);
+}
+.sec-head i { font-size:17px; color:var(--rose-light); flex-shrink:0; }
+.sec-head h2 {
+  font-family: var(--ff-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--burg-mid);
+}
+.sec-body { padding:1rem 1.5rem; }
+
+/* ── CARDS ENCONTROS ─────────────────────────── */
+.encontros { display:flex; flex-direction:column; gap:7px; }
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--rose-pale);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: border-color var(--ease), box-shadow var(--ease);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.card:active { transform:scale(.995); }
+.card.open {
+  border-color: rgba(168,68,110,.45);
+  box-shadow: 0 6px 28px rgba(168,68,110,.1);
+}
+
+.card-head {
+  display: grid;
+  grid-template-columns: 58px 1fr 30px;
+  align-items: center;
+  min-height: 68px;
+  user-select: none;
+}
+.card-num-col {
+  display:flex; align-items:center; justify-content:center;
+  padding:.75rem .5rem;
+}
+.num-bubble {
+  width:42px; height:42px; border-radius:50%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+}
+/* FONTE DOS NÚMEROS — Lato Bold, sem serifa, nítida */
+.num-digit {
+  font-family: var(--ff-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.3px;
+}
+.num-word {
+  font-family: var(--ff-sans);
+  font-size: 7px;
+  font-weight: 400;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+  opacity: .6;
+  margin-top: 2px;
+}
+
+.card-text { padding:.85rem .25rem; }
+.card-enc-lbl {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.card-tema {
+  font-family: var(--ff-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--burg-mid);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.card-verso {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.card-arrow {
+  display:flex; align-items:center; justify-content:center;
+  padding-right:.75rem;
+  transition: transform var(--ease);
+}
+.card-arrow i { font-size:17px; color:#c4a0b4; }
+.card.open .card-arrow { transform:rotate(180deg); }
+
+.card-body {
+  display:none;
+  padding:0 1.25rem 1.25rem;
+  border-top:1px solid var(--rose-pale);
+  animation: fadeUp .22s ease;
+}
+.card.open .card-body { display:block; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(-5px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.blk { margin-top:1.1rem; }
+.blk-lbl {
+  display:flex; align-items:center; gap:6px;
+  font-size:9px; font-weight:700; letter-spacing:2.5px;
+  text-transform:uppercase; color:var(--rose-light); margin-bottom:8px;
+}
+.blk-lbl::after { content:''; flex:1; height:1px; background:var(--rose-pale); }
+.blk-text {
+  font-size:14px; font-weight:300;
+  color:var(--text-body); line-height:1.8;
+}
+
+.din-list { list-style:none; display:flex; flex-direction:column; gap:7px; }
+.din-list li {
+  font-size:13.5px; font-weight:300;
+  color:var(--text-body); display:flex; align-items:flex-start;
+  gap:10px; line-height:1.65;
+}
+.din-list li::before {
+  content:'✦'; color:var(--rose-light); font-size:9px;
+  flex-shrink:0; margin-top:5px; opacity:.65;
+}
+
+.devo {
+  background:linear-gradient(135deg,#fdf4f8,#f9eef5);
+  border-left:2.5px solid var(--rose-light);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;
+  padding:11px 14px;
+  font-size:13px; font-style:italic; font-weight:300;
+  color:#6a3050; line-height:1.7;
+}
+
+.tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:12px; }
+.tag {
+  font-size:10.5px; padding:3px 11px; border-radius:100px;
+  background:#fdf0f7; color:#9a446a;
+  border:1px solid rgba(196,127,160,.28);
+  font-weight:400; letter-spacing:.2px;
+}
+
+/* ── INCLUSO ─────────────────────────────────── */
+.incluso-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+@media(max-width:360px){ .incluso-grid{grid-template-columns:1fr;} }
+
+.incluso-item {
+  display:flex; align-items:flex-start; gap:10px;
+  background:linear-gradient(135deg,var(--blush),#f9eef5);
+  border:1px solid var(--rose-pale);
+  border-radius:var(--r-sm);
+  padding:.85rem .9rem;
+}
+.incluso-item i { font-size:17px; color:var(--rose-light); flex-shrink:0; margin-top:1px; }
+.incluso-txt { font-size:12.5px; color:var(--text-body); line-height:1.55; font-weight:300; }
+
+/* ── PREÇOS ──────────────────────────────────── */
+.precos-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+
+.preco-link {
+  display:block; text-decoration:none;
+  border-radius:var(--r-md); overflow:hidden;
+  transition:transform var(--ease), box-shadow var(--ease);
+  -webkit-tap-highlight-color:transparent;
+}
+.preco-link:hover  { box-shadow:0 10px 36px rgba(168,68,110,.25); transform:translateY(-2px); }
+.preco-link:active { transform:scale(.97); }
+
+.preco-card {
+  padding:1.6rem 1rem 1.4rem;
+  text-align:center;
+  border-radius:var(--r-md);
+  position:relative; overflow:hidden;
+}
+
+/* Á vista — dark luxury */
+.preco-card.av {
+  background:linear-gradient(155deg,#2e1020 0%,#1a0810 55%,#261220 100%);
+  border:1px solid rgba(201,160,90,.22);
+}
+.preco-card.av::before {
+  content:''; position:absolute;
+  width:130px; height:130px; border-radius:50%;
+  background:radial-gradient(circle,rgba(201,160,90,.13) 0%,transparent 70%);
+  top:-35px; right:-30px; pointer-events:none;
+}
+
+/* Parcelado — blush soft */
+.preco-card.parc {
+  background:linear-gradient(155deg,#fdf4f8 0%,#f5e8f2 100%);
+  border:1.5px solid rgba(168,68,110,.32);
+}
+
+.preco-badge {
+  display:inline-block;
+  font-size:8.5px; font-weight:700;
+  letter-spacing:2.5px; text-transform:uppercase;
+  margin-bottom:10px; padding:3px 10px; border-radius:100px;
+}
+.av   .preco-badge { background:rgba(201,160,90,.14); color:var(--gold-light); border:1px solid rgba(201,160,90,.28); }
+.parc .preco-badge { background:rgba(168,68,110,.1);  color:var(--rose);       border:1px solid rgba(168,68,110,.24); }
+
+.preco-val {
+  font-family:var(--ff-sans);
+  font-size:1.6rem; font-weight:700;
+  line-height:1; display:block; margin-bottom:7px; letter-spacing:-.5px;
+}
+.av   .preco-val { color:var(--white); }
+.parc .preco-val { color:var(--burg-mid); }
+
+.preco-desc {
+  font-size:11.5px; font-weight:300; line-height:1.55; display:block;
+}
+.av   .preco-desc { color:rgba(232,207,160,.72); }
+.parc .preco-desc { color:var(--text-muted); }
+
+.preco-cta {
+  display:inline-flex; align-items:center; gap:5px;
+  margin-top:13px; font-size:9.5px; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  padding:7px 14px; border-radius:100px;
+  position:relative;
+}
+.av   .preco-cta { background:var(--gold); color:var(--burgundy); }
+.parc .preco-cta { background:var(--rose); color:var(--white); }
+.preco-cta i { font-size:12px; }
+
+/* Garantia strip */
+.garantia {
+  display:flex; align-items:center; justify-content:center; gap:7px;
+  margin-top:10px; padding:9px 1rem;
+  background:var(--blush); border-radius:var(--r-sm);
+  border:1px solid var(--rose-pale);
+}
+.garantia i { font-size:14px; color:var(--rose-light); flex-shrink:0; }
+.garantia span { font-size:11px; color:var(--text-muted); font-weight:300; line-height:1.4; text-align:center; }
+
+/* ── FOOTER ──────────────────────────────────── */
+.footer-verso {
+  position:relative; overflow:hidden;
+  background:linear-gradient(145deg,#2e1020 0%,#1a0810 100%);
+  margin:1.5rem 1.5rem 0;
+  border-radius:var(--r-lg);
+  padding:2rem 1.6rem;
+  text-align:center;
+}
+.footer-verso::before {
+  content:''; position:absolute;
+  width:200px;height:200px; border-radius:50%;
+  background:radial-gradient(circle,rgba(196,127,160,.15) 0%,transparent 70%);
+  top:-60px; right:-50px; pointer-events:none;
+}
+.footer-verso::after {
+  content:''; position:absolute;
+  width:140px; height:140px; border-radius:50%;
+  background:radial-gradient(circle,rgba(201,160,90,.1) 0%,transparent 70%);
+  bottom:-45px; left:-35px; pointer-events:none;
+}
+
+.fv-orn { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:1.1rem; position:relative; }
+.fv-orn span { width:30px; height:1px; background:rgba(201,160,90,.3); }
+.fv-orn i { font-size:12px; color:var(--gold); opacity:.55; }
+
+.fv-text {
+  font-family:var(--ff-serif);
+  font-size:clamp(1rem,4vw,1.15rem);
+  font-style:italic; font-weight:300;
+  color:#f0d8e8; line-height:1.85; position:relative;
+}
+.fv-ref {
+  font-size:10.5px; color:rgba(201,160,90,.6);
+  margin-top:10px; letter-spacing:1px;
+  font-weight:700; text-transform:uppercase; position:relative;
+}
+
+.page-end { height:2.5rem; }
+
+/* ── DESKTOP ─────────────────────────────────── */
+@media(min-width:541px){
+  body { background:#0d0408; }
+  .page { box-shadow:0 0 80px rgba(0,0,0,.55); }
+  .hero { padding:5rem 2.5rem 3.5rem; }
+  .sec-head { padding:2rem 2rem 1rem; }
+  .sec-body { padding:1rem 2rem; }
+  .footer-verso { margin:1.5rem 2rem 0; }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{ animation-duration:.01ms!important; transition-duration:.01ms!important; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+    <div class="orb orb-3" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="ti ti-sparkles"></i> Mentoria Individual · Online ao vivo</div>
+      <div class="ornament" aria-hidden="true"><span></span><i class="ti ti-flower"></i><span></span></div>
+      <h1 class="hero-title">Saia do Raso</h1>
+      <p class="hero-sub">Viva o Profundo em Deus</p>
+      <div class="hero-div" aria-hidden="true"><span></span><i class="ti ti-heart"></i><span></span></div>
+      <p class="hero-tagline">
+        <strong>Aqui a cura acontece</strong> — a identidade é restaurada<br>
+        e a presença de Deus se torna o seu lar.
+      </p>
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <div class="stats" role="list" aria-label="Resumo">
+    <div class="stat" role="listitem">
+      <i class="ti ti-calendar stat-icon"></i>
+      <span class="stat-num">10</span>
+      <span class="stat-lbl">Encontros</span>
+    </div>
+    <div class="stat" role="listitem">
+      <i class="ti ti-clock stat-icon"></i>
+      <span class="stat-num">90<sup>min</sup></span>
+      <span class="stat-lbl">Ao vivo · Zoom</span>
+    </div>
+    <div class="stat" role="listitem">
+      <i class="ti ti-refresh stat-icon"></i>
+      <span class="stat-num">15</span>
+      <span class="stat-lbl">Dias entre enc.</span>
+    </div>
+    <div class="stat" role="listitem">
+      <i class="ti ti-user stat-icon"></i>
+      <span class="stat-num">1×1</span>
+      <span class="stat-lbl">Individual</span>
+    </div>
+  </div>
+
+  <!-- ENCONTROS -->
+  <section aria-label="Os 10 encontros">
+    <div class="sec-head">
+      <i class="ti ti-sparkles"></i>
+      <h2>Os 10 encontros — toque para expandir</h2>
+    </div>
+    <div class="sec-body" style="padding-top:.75rem;">
+      <div class="encontros" id="encontros" role="list"></div>
+    </div>
+  </section>
+
+  <!-- INCLUSO -->
+  <section aria-label="O que está incluído">
+    <div class="sec-head"><i class="ti ti-gift"></i><h2>O que está incluído</h2></div>
+    <div class="sec-body">
+      <div class="incluso-grid">
+        <div class="incluso-item"><i class="ti ti-video"></i><span class="incluso-txt">10 encontros ao vivo pelo Zoom com atenção 100% para você</span></div>
+        <div class="incluso-item"><i class="ti ti-book"></i><span class="incluso-txt">Material devocional personalizado para cada quinzena</span></div>
+        <div class="incluso-item"><i class="ti ti-message-circle"></i><span class="incluso-txt">Suporte por WhatsApp entre os encontros</span></div>
+        <div class="incluso-item"><i class="ti ti-heart"></i><span class="incluso-txt">Ministração e oração ao final de cada encontro</span></div>
+        <div class="incluso-item"><i class="ti ti-file-text"></i><span class="incluso-txt">Palavra profética e carta de encorajamento no encerramento</span></div>
+        <div class="incluso-item"><i class="ti ti-star"></i><span class="incluso-txt">Plano pessoal de vida espiritual construído com você</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTIMENTO -->
+  <section aria-label="Investimento">
+    <div class="sec-head"><i class="ti ti-currency-dollar"></i><h2>Investimento</h2></div>
+    <div class="sec-body">
+      <div class="precos-grid">
+
+        <a class="preco-link"
+           href="https://link.infinitepay.io/danielamentora2026/VC1D-jqcwTZBbQ8-1197,00"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Pagar à vista R$ 1.197 — abre página de pagamento">
+          <div class="preco-card av">
+            <span class="preco-badge">À vista</span>
+            <span class="preco-val">R$ 1.197</span>
+            <span class="preco-desc">Pagamento único<br>com economia total</span>
+            <span class="preco-cta"><i class="ti ti-lock"></i>Garantir vaga</span>
+          </div>
+        </a>
+
+        <a class="preco-link"
+           href="https://link.infinitepay.io/danielamentora2026/VC1D-jqcwTZBbQ8-1197,00"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Pagar parcelado 10x R$ 141 — abre página de pagamento">
+          <div class="preco-card parc">
+            <span class="preco-badge">Parcelado</span>
+            <span class="preco-val">10× R$ 141</span>
+            <span class="preco-desc">No cartão<br>de crédito</span>
+            <span class="preco-cta"><i class="ti ti-lock"></i>Garantir vaga</span>
+          </div>
+        </a>
+
+      </div>
+      <div class="garantia">
+        <i class="ti ti-shield-check"></i>
+        <span>Pagamento 100% seguro · Atendimento personalizado garantido</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="sec-body">
+    <footer class="footer-verso">
+      <div class="fv-orn" aria-hidden="true"><span></span><i class="ti ti-flower"></i><span></span></div>
+      <p class="fv-text">
+        "Avança para o largo e lançai as vossas redes para pescar.<br>
+        E assim fizeram, e colheram grande quantidade de peixes."
+      </p>
+      <p class="fv-ref">Lucas 5:4–6</p>
+    </footer>
+  </div>
+  <div class="page-end"></div>
+</div>
+
+<script>
+const enc = [
+  { num:"01", bg:"#fdf0f6", tc:"#8a2050", nc:"#c47fa0", tema:"O chamado ao largo", verso:"Lc 5:4 — \"Avança para o largo\"", objetivo:"Toda jornada começa com um diagnóstico honesto. Neste primeiro encontro você vai mapear onde está na sua vida espiritual hoje — o que te mantém no raso, o que te cansa, o que te distancia do Pai. É um espaço de segurança e acolhimento, sem julgamento, onde o desejo de ir mais fundo em Deus começa a ser despertado. Você não precisa chegar perfeita — precisa chegar disposta.", dinamicas:["Conversa de acolhimento: sua história e sua relação com Deus hoje","Mapeamento espiritual: o que me mantém na superfície?","Palavra: o dia em que Pedro largou tudo, saiu do raso e encontrou o milagre","Oração de abertura: rendição e disponibilidade para a jornada"], devo:"Escreva uma carta ao Pai dizendo o que você espera dessa jornada com Ele. Seja honesta — Ele aguenta sua honestidade.", tags:["Rendição","Diagnóstico","Abertura"] },
+  { num:"02", bg:"#fceef5", tc:"#7a1a48", nc:"#b8608a", tema:"Filha — não serva", verso:"1Jo 3:1 — \"Vede que amor nos deu o Pai, que fôssemos chamadas filhas de Deus\"", objetivo:"Muitas mulheres se relacionam com Deus a partir do desempenho: orar mais, servir mais, errar menos. Esse encontro trata a raiz de orfandade espiritual e o relacionamento com Deus baseado em medo ou dívida. Você vai ser convidada a sair do lugar de serva ansiosa e entrar no descanso de filha amada — não pelo que faz, mas por quem você é para Ele.", dinamicas:["Como você enxerga o Pai? Construindo o mapa da sua imagem de Deus","Ensino: a diferença entre servir por medo e amar por filiação","Dinâmica da carta do Pai — ouvir em oração o que Ele quer dizer a você hoje","Ministração: cura da imagem paterna e declarações de identidade em voz alta"], devo:"Toda manhã desta quinzena, antes de qualquer coisa, diga em voz alta: 'Eu sou filha amada do Pai. Ele me ama não pelo que faço, mas por quem eu sou.'", tags:["Identidade","Filiação","Cura Paterna"] },
+  { num:"03", bg:"#fceef5", tc:"#6a1040", nc:"#a84870", tema:"As feridas que fecham o coração", verso:"Sl 147:3 — \"Ele sara os de coração quebrantado e cura as suas feridas\"", objetivo:"Existe algo que fecha o coração para Deus — e quase sempre é uma dor não processada. Rejeição, abandono, decepção, vergonha, traição. Esse encontro cria um espaço sagrado e seguro para você reconhecer as feridas que constroem distância de Deus, mesmo sem você perceber. O Espírito Santo é o médico da alma — e Ele não tem pressa.", dinamicas:["Mapeamento das feridas: o que me impediu de confiar plenamente em Deus?","Ensino sobre cura interior: o papel do Espírito Santo na restauração emocional","Partilha guiada: uma dor que você nunca levou completamente ao Pai","Ministração profunda de cura interior — tempo prolongado de presença e oração"], devo:"Escreva uma carta para você mesma no passado — na idade em que mais precisou ser cuidada — com as palavras que você acredita que o Pai teria dito.", tags:["Cura Interior","Vergonha","Rejeição","Espírito Santo"] },
+  { num:"04", bg:"#f8eaf4", tc:"#5a0a38", nc:"#9a4070", tema:"Aprendendo a ouvir o Pai", verso:"Jo 10:27 — \"As minhas ovelhas ouvem a minha voz, e eu as conheço\"", objetivo:"A intimidade com o Pai não é só falar com Ele — é aprender a ouvi-Lo. Mas tantas coisas nos ensurdeceram: a pressa, o barulho da vida, as vozes do passado, o próprio medo de ouvir algo difícil. Nesse encontro você vai aprender formas práticas de cultivar a escuta, reconhecer a voz do Pai e criar espaço real para o diálogo com Ele.", dinamicas:["Por que é difícil ouvir a Deus? Identificando os ruídos internos e externos","Ensino: as diferentes formas de ouvir — Palavra, silêncio, intuição, sonhos, paz","Prática de contemplação guiada ao vivo — 15 minutos de escuta em presença","O que o Pai falou? Espaço de partilha e discernimento juntas"], devo:"Reserve 5 minutos de silêncio por dia — sem música, sem celular. Só você e o Pai. Anote no papel o que vier ao coração.", tags:["Escuta","Contemplação","Voz de Deus"] },
+  { num:"05", bg:"#f8eaf4", tc:"#5a0a38", nc:"#9a4070", tema:"Oração que não é obrigação", verso:"Mt 6:6 — \"Entra no teu aposento e, fechando a porta, ora a teu Pai\"", objetivo:"Oração não deveria ser uma tarefa da lista. Deveria ser o lugar mais seguro do mundo — onde você chega como é, fala o que sente, chora se precisar e descansa no colo do Pai. Esse encontro vai libertar você da oração religiosa e formal, e te ajudar a construir um jeito próprio, real e sustentável de encontrar Deus todos os dias.", dinamicas:["O que a oração é para você hoje? Diagnóstico honesto sem culpa","Ensino sobre modalidades de oração: adoração, contemplação, intercessão, lamento","Construindo o aposento secreto personalizado — seu jeito único de encontrar o Pai","Experimentando uma forma nova de orar juntas ao vivo"], devo:"Monte o seu devocional matinal de 20 minutos para esta quinzena. Escolha o horário, o lugar, o formato. Comece amanhã.", tags:["Oração","Aposento Secreto","Liberdade","Hábito"] },
+  { num:"06", bg:"#f5e5f0", tc:"#4a0830", nc:"#8a3860", tema:"Perdão — abrindo o coração ao Pai", verso:"Mt 6:14 — \"Se perdoardes as ofensas, vosso Pai celestial também vos perdoará\"", objetivo:"Mágoa não perdoada é uma das maiores barreiras para a intimidade com Deus. Não é coincidência que Jesus conectou o perdão ao Pai com o perdão entre as pessoas. Esse encontro trata o perdão não como minimização da dor, mas como um ato de libertação — de você mesma. Você vai sair mais leve, mais aberta e mais próxima do Pai.", dinamicas:["A conexão entre mágoa guardada e distância de Deus — entendendo o mecanismo","Ensino: perdoar não é dizer que estava certo — é se libertar da corrente","Dinâmica: lista das pessoas e situações que ainda pesam no coração","Oração guiada de perdão profundo — momento real de libertação e refrigério"], devo:"Durante 7 dias, escolha uma pessoa da sua lista e ore por ela. Não para sentir algo — apenas como ato de obediência e libertação.", tags:["Perdão","Libertação","Refrigério","Graça"] },
+  { num:"07", bg:"#f5e5f0", tc:"#4a0830", nc:"#8a3860", tema:"O Espírito Santo — meu amigo íntimo", verso:"Jo 14:16 — \"Eu rogarei ao Pai e ele vos dará outro Consolador, para que esteja convosco\"", objetivo:"O Espírito Santo não é um fenômeno — é uma pessoa. Ele tem sentimentos, voz e desejo de intimidade com você. Esse encontro vai transformar sua relação com o Espírito de algo distante ou assustador para algo próximo, cotidiano e real. Você vai aprender a incluí-Lo nas pequenas coisas da vida e descobrir que Ele já estava lá o tempo todo.", dinamicas:["Quem é o Espírito Santo para você hoje? Desconstruindo medos e mal-entendidos","Ensino: consolador, guia, intercessor, amigo — os nomes e o coração do Espírito","Como cultivar a comunhão com o Espírito Santo no cotidiano — práticas simples","Ministração: batismo, renovação ou aprofundamento no Espírito Santo"], devo:"Ao acordar, antes de pegar o celular, cumprimente o Espírito Santo. Fale com Ele ao longo do dia como falaria com um amigo que está ao seu lado.", tags:["Espírito Santo","Comunhão","Intimidade","Presença"] },
+  { num:"08", bg:"#f2e0ec", tc:"#3a0628", nc:"#784060", tema:"Minha história nas mãos do Pai", verso:"Jr 29:11 — \"Porque eu sei os planos que tenho para vós, diz o Senhor\"", objetivo:"Sua história não foi acidente. Cada dor carregou um propósito, cada virada revelou a mão do Pai. Esse encontro vai te ajudar a olhar para trás com novos olhos — não com saudade ou amargura, mas com gratidão e admiração pelo que Deus fez sem você perceber. O propósito não está à frente esperando por você — ele está sendo tecido agora.", dinamicas:["Linha do tempo da sua vida: dores, viradas, momentos de encontro com Deus","Ensino: propósito não é função — é identidade em movimento e amor em ação","O que o Pai fez com sua história? Reconhecendo a Sua mão em cada capítulo","Oração de gratidão profunda e rendição de toda a trajetória ao Pai"], devo:"Escreva sua testemunha — não o que você fez, mas o que Deus fez em você. Pode ser longa. Deixe as lágrimas virem.", tags:["Propósito","Testemunha","Gratidão","Soberania"] },
+  { num:"09", bg:"#f2e0ec", tc:"#3a0628", nc:"#784060", tema:"Vivendo no profundo todos os dias", verso:"Cl 2:7 — \"Arraigados e edificados nele e confirmados na fé\"", objetivo:"O profundo não é um destino — é um estilo de vida. E ele precisa de âncoras. Esse encontro vai criar com você uma estrutura real e sustentável para manter a intimidade com o Pai depois que a mentoria terminar. Nada complicado, nada religioso — só hábitos simples que conectam você ao coração de Deus todos os dias.", dinamicas:["O que me sustenta e o que me drena espiritualmente — análise honesta da rotina","Ensino: âncoras espirituais — os hábitos pequenos que mantêm o profundo vivo","Construindo juntas o plano pessoal de vida espiritual — prático e realista para sua vida","Oração de pacto: comprometer-se diante de Deus com o profundo como escolha diária"], devo:"Escolha 1 novo hábito espiritual para implementar nesta quinzena. Só um. Faça todos os dias e observe o que muda.", tags:["Hábitos","Disciplina","Sustentabilidade","Plano Espiritual"] },
+  { num:"10", bg:"#fdf0f6", tc:"#8a2050", nc:"#c47fa0", tema:"Águas profundas — celebração e envio", verso:"Ez 47:5 — \"As águas haviam crescido... eram águas em que se nadava\"", objetivo:"Você chegou ao largo. Esse último encontro é de celebração, gratidão e envio. Vamos olhar para tudo que mudou, honrar a jornada, celebrar cada transformação — pequena ou grande — e te enviar com unção, clareza e autoridade para viver o profundo em Deus. Não como fim de uma mentoria, mas como início de uma nova forma de viver.", dinamicas:["Revisão da jornada: o que mudou em mim desde o primeiro encontro?","Momento de testemunho: a maior transformação desses 5 meses","Entrega da carta de encorajamento e palavra profética escrita pela mentora","Ministração de unção e envio — oração apostólica personalizada sobre sua vida"], devo:"Seja para outra mulher o que esta mentoria foi para você. O profundo não se guarda — se transborda.", tags:["Celebração","Unção","Envio","Missão"] }
+];
+
+const container = document.getElementById('encontros');
+
+enc.forEach(e => {
+  const card = document.createElement('article');
+  card.className = 'card';
+  card.setAttribute('role','listitem');
+  card.innerHTML = `
+    <div class="card-head" role="button" aria-expanded="false" tabindex="0">
+      <div class="card-num-col">
+        <div class="num-bubble" style="background:${e.bg}">
+          <span class="num-digit" style="color:${e.tc}">${e.num}</span>
+          <span class="num-word"  style="color:${e.tc}">enc.</span>
+        </div>
+      </div>
+      <div class="card-text">
+        <div class="card-enc-lbl" style="color:${e.nc}">Encontro ${e.num}</div>
+        <div class="card-tema">${e.tema}</div>
+        <div class="card-verso">${e.verso}</div>
+      </div>
+      <div class="card-arrow" aria-hidden="true"><i class="ti ti-chevron-down"></i></div>
+    </div>
+    <div class="card-body" aria-hidden="true">
+      <div class="blk">
+        <div class="blk-lbl">Descrição do encontro</div>
+        <p class="blk-text">${e.objetivo}</p>
+      </div>
+      <div class="blk">
+        <div class="blk-lbl">Como acontece</div>
+        <ul class="din-list">${e.dinamicas.map(d=>`<li><span>${d}</span></li>`).join('')}</ul>
+      </div>
+      <div class="blk">
+        <div class="blk-lbl">Prática da quinzena</div>
+        <div class="devo">${e.devo}</div>
+      </div>
+      <div class="tags">${e.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    </div>
+  `;
+
+  const head = card.querySelector('.card-head');
+  const body = card.querySelector('.card-body');
+
+  function toggle() {
+    const was = card.classList.contains('open');
+    document.querySelectorAll('.card.open').forEach(c => {
+      c.classList.remove('open');
+      c.querySelector('.card-head').setAttribute('aria-expanded','false');
+      c.querySelector('.card-body').setAttribute('aria-hidden','true');
+    });
+    if (!was) {
+      card.classList.add('open');
+      head.setAttribute('aria-expanded','true');
+      body.setAttribute('aria-hidden','false');
+      setTimeout(() => card.scrollIntoView({ behavior:'smooth', block:'nearest' }), 60);
+    }
+  }
+
+  head.addEventListener('click', toggle);
+  head.addEventListener('keydown', ev => {
+    if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); }
+  });
+
+  container.appendChild(card);
+});
+</script>
+</body>
+</html>
