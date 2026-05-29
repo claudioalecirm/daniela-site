@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alinhamento de Expectativa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --cream-dark: #ede5d4;
+    --olive: #7a8c6e;
+    --olive-dark: #5a6b50;
+    --olive-light: #a3b496;
+    --gold: #b8975a;
+    --gold-light: #d4b07a;
+    --brown: #5c4a2a;
+    --brown-dark: #3d3020;
+    --text: #2e2416;
+    --text-soft: #6b5c45;
+    --white: #fdfaf5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background-color: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 20%, rgba(122,140,110,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 90% 80%, rgba(184,151,90,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 100% 100% at 50% 50%, rgba(245,240,232,1) 0%, rgba(237,229,212,1) 100%);
+    z-index: -1;
+  }
+
+  /* Decorative arches - inspired by the brand image */
+  .arch-decoration {
+    position: fixed;
+    top: 0;
+    right: -80px;
+    width: 300px;
+    height: 100vh;
+    border-left: 1.5px solid rgba(184,151,90,0.15);
+    border-radius: 300px 0 0 300px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .arch-decoration::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: -60px;
+    width: 200px;
+    height: 70vh;
+    border-left: 1px solid rgba(122,140,110,0.12);
+    border-radius: 200px 0 0 200px;
+  }
+
+  .arch-left {
+    position: fixed;
+    top: 0;
+    left: -120px;
+    width: 250px;
+    height: 100vh;
+    border-right: 1px solid rgba(184,151,90,0.10);
+    border-radius: 0 300px 300px 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 64px 24px 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 8vw, 64px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--brown-dark);
+    letter-spacing: -0.5px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .header-title span {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .header-subtitle {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .header-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 28px auto 0;
+    max-width: 300px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.7s forwards;
+  }
+
+  .header-divider::before,
+  .header-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-light), transparent);
+  }
+
+  .header-divider-icon {
+    color: var(--gold);
+    font-size: 16px;
+  }
+
+  /* Container */
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Intro text */
+  .intro {
+    text-align: center;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .intro p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-soft);
+    line-height: 1.7;
+  }
+
+  /* Form */
+  .form-card {
+    background: rgba(253,250,245,0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(184,151,90,0.2);
+    border-radius: 2px;
+    padding: 48px 44px;
+    box-shadow:
+      0 2px 4px rgba(92,74,42,0.04),
+      0 8px 32px rgba(92,74,42,0.06),
+      inset 0 1px 0 rgba(255,255,255,0.8);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1s forwards;
+  }
+
+  @media (max-width: 600px) {
+    .form-card { padding: 32px 24px; }
+  }
+
+  /* Section labels */
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin: 36px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(122,140,110,0.3), transparent);
+  }
+
+  .section-label:first-child { margin-top: 0; }
+
+  /* Field groups */
+  .field-group {
+    margin-bottom: 24px;
+  }
+
+  .field-group label {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 8px;
+  }
+
+  .field-group .question-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--brown-dark);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  /* Inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    background: rgba(245,240,232,0.6);
+    border: 1px solid rgba(184,151,90,0.25);
+    border-radius: 1px;
+    padding: 14px 16px;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text);
+    transition: all 0.3s ease;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  select:focus,
+  textarea:focus {
+    border-color: var(--gold);
+    background: rgba(253,250,245,0.9);
+    box-shadow: 0 0 0 3px rgba(184,151,90,0.08);
+  }
+
+  input::placeholder,
+  textarea::placeholder { color: rgba(107,92,69,0.45); }
+
+  textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+
+  select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8975a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 44px;
+  }
+
+  /* Two columns */
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 500px) {
+    .field-row { grid-template-columns: 1fr; }
+  }
+
+  /* Checkbox group */
+  .checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  @media (max-width: 500px) {
+    .checkbox-group { grid-template-columns: 1fr; }
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: rgba(245,240,232,0.5);
+    border: 1px solid rgba(184,151,90,0.18);
+    border-radius: 1px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    user-select: none;
+  }
+
+  .checkbox-item:hover {
+    background: rgba(184,151,90,0.08);
+    border-color: rgba(184,151,90,0.35);
+  }
+
+  .checkbox-item.checked {
+    background: rgba(184,151,90,0.12);
+    border-color: var(--gold);
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    accent-color: var(--gold);
+    cursor: pointer;
+  }
+
+  .checkbox-item span {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-soft);
+  }
+
+  .checkbox-item.checked span {
+    color: var(--brown);
+    font-weight: 400;
+  }
+
+  /* Slider */
+  .slider-wrapper {
+    padding: 8px 0 4px;
+  }
+
+  .slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .slider-labels span {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--text-soft);
+    letter-spacing: 0.5px;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--gold) 0%, var(--gold) var(--val, 0%), rgba(184,151,90,0.2) var(--val, 0%), rgba(184,151,90,0.2) 100%);
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--gold);
+    box-shadow: 0 2px 8px rgba(184,151,90,0.3);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--gold);
+    cursor: pointer;
+  }
+
+  .slider-value {
+    text-align: center;
+    margin-top: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .slider-value span {
+    font-size: 14px;
+    color: var(--text-soft);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    margin-left: 4px;
+  }
+
+  /* Radio buttons */
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .radio-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: rgba(245,240,232,0.5);
+    border: 1px solid rgba(184,151,90,0.18);
+    border-radius: 1px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    user-select: none;
+  }
+
+  .radio-item:hover {
+    background: rgba(184,151,90,0.08);
+    border-color: rgba(184,151,90,0.35);
+  }
+
+  .radio-item.selected {
+    background: rgba(184,151,90,0.12);
+    border-color: var(--gold);
+  }
+
+  .radio-item input[type="radio"] {
+    margin-top: 2px;
+    min-width: 16px;
+    accent-color: var(--gold);
+    cursor: pointer;
+  }
+
+  .radio-item span {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-soft);
+    line-height: 1.5;
+  }
+
+  .radio-item.selected span {
+    color: var(--brown);
+    font-weight: 400;
+  }
+
+  /* Submit button */
+  .submit-wrapper {
+    text-align: center;
+    margin-top: 44px;
+  }
+
+  .btn-submit {
+    display: inline-block;
+    padding: 18px 56px;
+    background: linear-gradient(135deg, var(--olive-dark) 0%, var(--olive) 100%);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-submit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .btn-submit:hover::before { opacity: 1; }
+  .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(122,140,110,0.25); }
+  .btn-submit:active { transform: translateY(0); }
+
+  .btn-submit span { position: relative; z-index: 1; }
+
+  .btn-submit.loading {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  /* Thank you screen */
+  .thank-you {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .thank-you.visible { display: block; }
+
+  .thank-you-icon {
+    font-size: 40px;
+    margin-bottom: 24px;
+    opacity: 0.8;
+  }
+
+  .thank-you-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--brown-dark);
+    margin-bottom: 8px;
+  }
+
+  .thank-you-subtitle {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 36px;
+  }
+
+  .thank-you-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-soft);
+    line-height: 1.8;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .thank-you-text strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--brown);
+  }
+
+  .thank-you-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 32px auto;
+  }
+
+  /* Error */
+  .error-msg {
+    color: #c0392b;
+    font-size: 11px;
+    font-family: 'Jost', sans-serif;
+    margin-top: 6px;
+    display: none;
+    letter-spacing: 0.5px;
+  }
+
+  .field-group.has-error input,
+  .field-group.has-error select,
+  .field-group.has-error textarea {
+    border-color: rgba(192,57,43,0.4);
+  }
+
+  .field-group.has-error .error-msg { display: block; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--brown-dark);
+    color: var(--cream);
+    padding: 14px 28px;
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    border-radius: 1px;
+    opacity: 0;
+    transition: all 0.4s ease;
+    pointer-events: none;
+    z-index: 100;
+    text-align: center;
+    max-width: 340px;
+    width: 90%;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="arch-decoration"></div>
+<div class="arch-left"></div>
+
+<!-- HEADER -->
+<div class="header">
+  <h1 class="header-title"><span>Alinhamento</span><br>de Expectativa</h1>
+  <div class="header-divider">
+    <span class="header-divider-icon">✦</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>Este formulário é o seu primeiro passo.<br>Responda com honestidade — cada palavra importa.</p>
+  </div>
+
+  <!-- FORM CARD -->
+  <div class="form-card" id="formCard">
+    <form id="mainForm" novalidate>
+
+      <!-- DADOS PESSOAIS -->
+      <div class="section-label">Sobre você</div>
+
+      <div class="field-group" id="fg-nome">
+        <label>Nome completo</label>
+        <input type="text" name="nome" placeholder="Seu nome completo" />
+        <p class="error-msg">Por favor, informe seu nome.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group" id="fg-email">
+          <label>E-mail</label>
+          <input type="email" name="email" placeholder="seu@email.com" />
+          <p class="error-msg">Informe um e-mail válido.</p>
+        </div>
+        <div class="field-group" id="fg-idade">
+          <label>Idade</label>
+          <input type="number" name="idade" placeholder="Sua idade" min="16" max="99" />
+          <p class="error-msg">Informe sua idade.</p>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group" id="fg-estado_civil">
+          <label>Estado civil</label>
+          <select name="estado_civil">
+            <option value="">Selecione</option>
+            <option>Solteira</option>
+            <option>Casada</option>
+            <option>Divorciada</option>
+            <option>Viúva</option>
+            <option>Em relacionamento</option>
+            <option>Prefiro não informar</option>
+          </select>
+          <p class="error-msg">Selecione seu estado civil.</p>
+        </div>
+        <div class="field-group" id="fg-religiao">
+          <label>Religião / fé</label>
+          <input type="text" name="religiao" placeholder="Ex: Cristã, Evangélica..." />
+          <p class="error-msg">Por favor, preencha este campo.</p>
+        </div>
+      </div>
+
+      <!-- MOTIVAÇÃO -->
+      <div class="section-label">Sua jornada</div>
+
+      <div class="field-group" id="fg-motivacao">
+        <p class="question-text">O que motivou você a entrar em um processo de mentoria neste momento da sua vida?</p>
+        <textarea name="motivacao" placeholder="Compartilhe com sinceridade..."></textarea>
+        <p class="error-msg">Por favor, responda esta pergunta.</p>
+      </div>
+
+      <div class="field-group" id="fg-resultado_esperado">
+        <p class="question-text">Qual é o principal resultado que você espera alcançar com essa mentoria?</p>
+        <textarea name="resultado_esperado" placeholder="Descreva seu maior desejo para esse processo..."></textarea>
+        <p class="error-msg">Por favor, responda esta pergunta.</p>
+      </div>
+
+      <div class="field-group" id="fg-area_foco">
+        <p class="question-text">Qual área da sua vida você deseja desenvolver com mais foco neste momento?<br><small style="font-family:'Jost',sans-serif;font-size:12px;color:var(--text-soft);font-weight:300;">(Pode escolher mais de uma)</small></p>
+        <div class="checkbox-group" id="areaFoco">
+          <label class="checkbox-item">
+            <input type="checkbox" name="area_foco" value="Vida espiritual" />
+            <span>Vida espiritual</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="area_foco" value="Vida emocional" />
+            <span>Vida emocional</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="area_foco" value="Família" />
+            <span>Família</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="area_foco" value="Profissional" />
+            <span>Profissional</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="area_foco" value="Propósito" />
+            <span>Propósito</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="area_foco" value="Finanças" />
+            <span>Finanças</span>
+          </label>
+        </div>
+        <p class="error-msg" id="areaFocoError" style="display:none;">Selecione ao menos uma área.</p>
+      </div>
+
+      <div class="field-group" id="fg-obstaculo">
+        <p class="question-text">O que você acredita que tem sido o maior obstáculo para avançar nessa área?</p>
+        <textarea name="obstaculo" placeholder="Seja honesta consigo mesma..."></textarea>
+        <p class="error-msg">Por favor, responda esta pergunta.</p>
+      </div>
+
+      <!-- COMPROMETIMENTO -->
+      <div class="section-label">Comprometimento</div>
+
+      <div class="field-group">
+        <p class="question-text">Qual é o seu nível de comprometimento com esse processo de desenvolvimento?</p>
+        <div class="slider-wrapper">
+          <div class="slider-labels">
+            <span>0 — Ainda avaliando</span>
+            <span>10 — Totalmente comprometida</span>
+          </div>
+          <input type="range" id="comprometimento" name="comprometimento" min="0" max="10" value="7" />
+          <div class="slider-value"><span id="sliderVal">7</span><span>/ 10</span></div>
+        </div>
+      </div>
+
+      <div class="field-group" id="fg-visao_futura">
+        <p class="question-text">Se ao final dessa mentoria sua vida estivesse no nível que você deseja, como ela seria?</p>
+        <textarea name="visao_futura" placeholder="Descreva essa versão de você..."></textarea>
+        <p class="error-msg">Por favor, responda esta pergunta.</p>
+      </div>
+
+      <div class="field-group" id="fg-algo_importante">
+        <p class="question-text">Existe algo importante sobre sua vida ou momento atual que você acredita que eu deveria saber antes de iniciarmos?</p>
+        <textarea name="algo_importante" placeholder="Compartilhe o que sentir necessidade..."></textarea>
+        <p class="error-msg">Por favor, responda esta pergunta.</p>
+      </div>
+
+      <div class="field-group" id="fg-responsabilidade">
+        <p class="question-text">Hoje, você acredita que o seu momento atual é resultado mais das suas decisões ou mais de fatores externos?</p>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="responsabilidade" value="Principalmente das minhas decisões" />
+            <span>Principalmente das minhas decisões</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="responsabilidade" value="Principalmente de fatores externos" />
+            <span>Principalmente de fatores externos</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="responsabilidade" value="Equilíbrio entre os dois" />
+            <span>Equilíbrio entre os dois</span>
+          </label>
+        </div>
+        <p class="error-msg" id="responsabilidadeError" style="display:none;">Selecione uma opção.</p>
+      </div>
+
+      <div class="field-group" id="fg-orientacoes">
+        <p class="question-text">Durante o processo, podem ser indicados materiais complementares para acelerar seu desenvolvimento. Você está disposta a seguir essas orientações?</p>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="orientacoes" value="Sim, estou disposta" />
+            <span>Sim, estou disposta</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="orientacoes" value="Sim, com algumas ressalvas" />
+            <span>Sim, com algumas ressalvas</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="orientacoes" value="Preciso avaliar melhor" />
+            <span>Preciso avaliar melhor</span>
+          </label>
+        </div>
+        <p class="error-msg" id="orientacoesError" style="display:none;">Selecione uma opção.</p>
+      </div>
+
+      <!-- DIMENSÃO ESPIRITUAL -->
+      <div class="section-label">Dimensão espiritual</div>
+
+      <div class="field-group" id="fg-relacao_deus">
+        <p class="question-text">Como você descreveria sua relação com Deus hoje?</p>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="relacao_deus" value="Próxima e ativa" />
+            <span>Próxima e ativa</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="relacao_deus" value="Existe, mas distante" />
+            <span>Existe, mas distante</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="relacao_deus" value="Em um momento de busca e reconexão" />
+            <span>Em um momento de busca e reconexão</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="relacao_deus" value="Em construção, ainda estou entendendo" />
+            <span>Em construção, ainda estou entendendo</span>
+          </label>
+        </div>
+        <p class="error-msg" id="relacaoDeus_Error" style="display:none;">Selecione uma opção.</p>
+      </div>
+
+      <div class="field-group" id="fg-vida_oracao">
+        <p class="question-text">Como está sua vida de oração e leitura da Bíblia na sua rotina hoje?</p>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="vida_oracao" value="Regular e consistente" />
+            <span>Regular e consistente</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="vida_oracao" value="Irregular, mas presente" />
+            <span>Irregular, mas presente</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="vida_oracao" value="Quase inexistente no momento" />
+            <span>Quase inexistente no momento</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="vida_oracao" value="Quero desenvolver essa disciplina" />
+            <span>Quero desenvolver essa disciplina</span>
+          </label>
+        </div>
+        <p class="error-msg" id="vidaOracao_Error" style="display:none;">Selecione uma opção.</p>
+      </div>
+
+      <div class="field-group" id="fg-pesos_espirituais">
+        <p class="question-text">Existe alguma área da sua vida onde você sente um peso espiritual?<br><small style="font-family:'Jost',sans-serif;font-size:12px;color:var(--text-soft);font-weight:300;">(Pode escolher mais de uma)</small></p>
+        <div class="checkbox-group" id="pesosEspirituais">
+          <label class="checkbox-item">
+            <input type="checkbox" name="pesos_espirituais" value="Culpa" />
+            <span>Culpa</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="pesos_espirituais" value="Mágoa" />
+            <span>Mágoa</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="pesos_espirituais" value="Amargura" />
+            <span>Amargura</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="pesos_espirituais" value="Arrependimento" />
+            <span>Arrependimento</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="pesos_espirituais" value="Algo não resolvido com Deus" />
+            <span>Algo não resolvido com Deus</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="pesos_espirituais" value="Não sinto esse peso no momento" />
+            <span>Não sinto esse peso no momento</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field-group" id="fg-expectativa_deus">
+        <p class="question-text">O que você está pedindo a Deus nessa temporada da sua vida? Qual é sua expectativa espiritual para esse processo?</p>
+        <textarea name="expectativa_deus" placeholder="Compartilhe sua oração, seu desejo mais profundo..."></textarea>
+        <p class="error-msg">Por favor, responda esta pergunta.</p>
+      </div>
+
+      <div class="field-group" id="fg-mentoria_anterior">
+        <p class="question-text">Você já teve algum processo de aconselhamento pastoral, mentoria espiritual ou acompanhamento de liderança?</p>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="mentoria_anterior" value="Sim" />
+            <span>Sim</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="mentoria_anterior" value="Não" />
+            <span>Não</span>
+          </label>
+        </div>
+        <p class="error-msg" id="mentoriaAnterior_Error" style="display:none;">Selecione uma opção.</p>
+        <div id="mentoriaAnteriorDetalhe" style="display:none;margin-top:12px;">
+          <textarea name="mentoria_anterior_detalhe" placeholder="O que funcionou ou não funcionou nesse processo?"></textarea>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="submit-wrapper">
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span>Enviar minhas respostas</span>
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- THANK YOU -->
+  <div class="form-card thank-you" id="thankYou">
+    <div class="thank-you-icon">✦</div>
+    <h2 class="thank-you-title">Sua jornada começa aqui.</h2>
+    <p class="thank-you-subtitle">Alinhamento de expectativa recebido</p>
+    <div class="thank-you-divider"></div>
+    <p class="thank-you-text">
+      "Você não chegou até aqui por acaso. Cada resposta que você acabou de dar é um passo de coragem — e Deus já estava te preparando para esse momento antes mesmo de você perceber.
+      <br><br>
+      Em breve a <strong>Daniela</strong> entrará em contato para dar os próximos passos.
+      <br><br>
+      Caminhar sozinha nunca mais. A Dani está ao seu lado — e o Espírito Santo à sua frente. O novo que Deus preparou para você está prestes a começar."
+    </p>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+  // Slider
+  const slider = document.getElementById('comprometimento');
+  const sliderVal = document.getElementById('sliderVal');
+
+  function updateSlider() {
+    const val = slider.value;
+    const pct = (val / 10) * 100;
+    slider.style.setProperty('--val', pct + '%');
+    sliderVal.textContent = val;
+  }
+
+  slider.addEventListener('input', updateSlider);
+  updateSlider();
+
+  // Checkbox visual
+  document.querySelectorAll('.checkbox-item').forEach(item => {
+    const cb = item.querySelector('input[type="checkbox"]');
+    cb.addEventListener('change', () => {
+      item.classList.toggle('checked', cb.checked);
+    });
+  });
+
+  // Radio visual
+  document.querySelectorAll('.radio-group').forEach(group => {
+    group.querySelectorAll('.radio-item').forEach(item => {
+      const radio = item.querySelector('input[type="radio"]');
+      radio.addEventListener('change', () => {
+        group.querySelectorAll('.radio-item').forEach(i => i.classList.remove('selected'));
+        item.classList.add('selected');
+      });
+    });
+  });
+
+  // Mentoria anterior toggle
+  document.querySelectorAll('input[name="mentoria_anterior"]').forEach(r => {
+    r.addEventListener('change', () => {
+      const detalhe = document.getElementById('mentoriaAnteriorDetalhe');
+      detalhe.style.display = r.value === 'Sim' ? 'block' : 'none';
+    });
+  });
+
+  // Toast
+  function showToast(msg, duration = 4000) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), duration);
+  }
+
+  // Validation
+  function validateForm() {
+    let valid = true;
+
+    const requiredFields = [
+      { id: 'fg-nome', field: 'nome', type: 'text' },
+      { id: 'fg-email', field: 'email', type: 'email' },
+      { id: 'fg-idade', field: 'idade', type: 'text' },
+      { id: 'fg-estado_civil', field: 'estado_civil', type: 'select' },
+      { id: 'fg-religiao', field: 'religiao', type: 'text' },
+      { id: 'fg-motivacao', field: 'motivacao', type: 'text' },
+      { id: 'fg-resultado_esperado', field: 'resultado_esperado', type: 'text' },
+      { id: 'fg-obstaculo', field: 'obstaculo', type: 'text' },
+      { id: 'fg-visao_futura', field: 'visao_futura', type: 'text' },
+      { id: 'fg-algo_importante', field: 'algo_importante', type: 'text' },
+      { id: 'fg-expectativa_deus', field: 'expectativa_deus', type: 'text' },
+    ];
+
+    requiredFields.forEach(({ id, field, type }) => {
+      const fg = document.getElementById(id);
+      const el = document.querySelector(`[name="${field}"]`);
+      const empty = !el || !el.value.trim() || (type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value));
+      fg.classList.toggle('has-error', empty);
+      if (empty) valid = false;
+    });
+
+    // Checkboxes área foco
+    const areaChecked = document.querySelectorAll('input[name="area_foco"]:checked').length > 0;
+    document.getElementById('areaFocoError').style.display = areaChecked ? 'none' : 'block';
+    if (!areaChecked) valid = false;
+
+    // Radios
+    const radioChecks = [
+      { name: 'responsabilidade', errId: 'responsabilidadeError' },
+      { name: 'orientacoes', errId: 'orientacoesError' },
+      { name: 'relacao_deus', errId: 'relacaoDeus_Error' },
+      { name: 'vida_oracao', errId: 'vidaOracao_Error' },
+      { name: 'mentoria_anterior', errId: 'mentoriaAnterior_Error' },
+    ];
+
+    radioChecks.forEach(({ name, errId }) => {
+      const checked = document.querySelector(`input[name="${name}"]:checked`);
+      const err = document.getElementById(errId);
+      err.style.display = checked ? 'none' : 'block';
+      if (!checked) valid = false;
+    });
+
+    return valid;
+  }
+
+  // Collect data
+  function collectFormData() {
+    const fd = new FormData(document.getElementById('mainForm'));
+    const data = {};
+    for (let [key, value] of fd.entries()) {
+      if (data[key]) {
+        data[key] = Array.isArray(data[key]) ? [...data[key], value] : [data[key], value];
+      } else {
+        data[key] = value;
+      }
+    }
+    data.comprometimento = document.getElementById('comprometimento').value;
+    return data;
+  }
+
+  // Submit
+  document.getElementById('mainForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      showToast('Por favor, preencha todos os campos obrigatórios.');
+      const firstError = document.querySelector('.has-error, [style*="block"]');
+      if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.classList.add('loading');
+    btn.querySelector('span').textContent = 'Enviando...';
+
+    const formData = collectFormData();
+
+    try {
+      // Envia tudo para a Vercel Function — keys ficam seguras no servidor
+      const res = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) throw new Error(result.error || 'Erro no envio.');
+
+      // Mostrar tela de obrigado
+      document.getElementById('formCard').style.display = 'none';
+      const ty = document.getElementById('thankYou');
+      ty.classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (err) {
+      console.error(err);
+      showToast('Ocorreu um erro. Por favor, tente novamente.');
+      btn.classList.remove('loading');
+      btn.querySelector('span').textContent = 'Enviar minhas respostas';
+    }
+  });
+</script>
+</body>
+</html>
