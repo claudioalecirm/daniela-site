@@ -1,34 +1,11 @@
-export const config = { runtime: 'edge' };
+export default async function handler(req, res) {
+  // CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-export default async function handler(req) {
-  // Apenas POST
-  if (req.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Método não permitido' }), {
-      status: 405,
-      headers: { 'Content-Type': 'application/json' }
-    });
-  }
-
-  // CORS — permite chamada do próprio domínio
-  const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Content-Type': 'application/json'
-  };
-
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers: corsHeaders });
-  }
-
-  let body;
-  try {
-    body = await req.json();
-  } catch {
-    return new Response(JSON.stringify({ error: 'Payload inválido' }), {
-      status: 400, headers: corsHeaders
-    });
-  }
+  if (req.method === 'OPTIONS') return res.status(204).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Método não permitido' });
 
   const {
     nome, email, idade, estado_civil, religiao,
@@ -36,18 +13,15 @@ export default async function handler(req) {
     obstaculo, visao_futura, algo_importante, responsabilidade,
     orientacoes, relacao_deus, vida_oracao, pesos_espirituais,
     expectativa_deus, mentoria_anterior, mentoria_anterior_detalhe
-  } = body;
+  } = req.body || {};
 
-  // Validação mínima server-side
   if (!nome || !email) {
-    return new Response(JSON.stringify({ error: 'Campos obrigatórios ausentes.' }), {
-      status: 422, headers: corsHeaders
-    });
+    return res.status(422).json({ error: 'Campos obrigatórios ausentes.' });
   }
 
-  const SUPABASE_URL = process.env.SUPABASE_URL;
+  const SUPABASE_URL    = process.env.SUPABASE_URL;
   const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
-  const RESEND_API_KEY = process.env.RESEND_API_KEY;
+  const RESEND_API_KEY  = process.env.RESEND_API_KEY;
 
   // 1. Salvar no Supabase
   const dbRes = await fetch(`${SUPABASE_URL}/rest/v1/mentoria_alinhamento`, {
@@ -75,9 +49,7 @@ export default async function handler(req) {
   if (!dbRes.ok) {
     const err = await dbRes.text();
     console.error('Supabase error:', err);
-    return new Response(JSON.stringify({ error: 'Erro ao salvar no banco.' }), {
-      status: 500, headers: corsHeaders
-    });
+    return res.status(500).json({ error: 'Erro ao salvar no banco.' });
   }
 
   // 2. Enviar email via Resend
@@ -149,13 +121,8 @@ export default async function handler(req) {
   if (!emailRes.ok) {
     const err = await emailRes.text();
     console.error('Resend error:', err);
-    // Não bloqueia — dado já foi salvo no banco
-    return new Response(JSON.stringify({ success: true, warning: 'Dados salvos, mas email falhou.' }), {
-      status: 200, headers: corsHeaders
-    });
+    return res.status(200).json({ success: true, warning: 'Dados salvos, mas email falhou.' });
   }
 
-  return new Response(JSON.stringify({ success: true }), {
-    status: 200, headers: corsHeaders
-  });
+  return res.status(200).json({ success: true });
 }
