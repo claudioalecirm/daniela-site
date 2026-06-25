@@ -619,28 +619,29 @@
 
     const salvo = await salvarSupabase({ nome, idade, cidade, estado_civil, profissao });
 
-    // Monta mensagem para WhatsApp
+    // Monta mensagem para WhatsApp com dados + pedido de chave Pix
     const msg = encodeURIComponent(
-      'Olá, Daniela! 🌿 Gostaria de confirmar minha inscrição no *Mulheres à Mesa — 1ª Edição*!\n\n' +
-      '✨ *Meus dados:*\n' +
-      '👤 Nome: '          + nome        + '\n' +
-      '🎂 Idade: '         + idade       + ' anos\n' +
-      '📍 Cidade: '        + cidade      + '\n' +
-      '💍 Estado civil: '  + estado_civil + '\n' +
-      '💼 Profissão: '     + profissao   + '\n\n' +
-      'Aguardo as informações para confirmar meu lugar. 💛'
+      'Olá, Daniela! 🌿\n\n' +
+      'Seguem meus dados para inscrição no *Mulheres à Mesa — 1ª Edição*:\n\n' +
+      '👤 *Nome:* '         + nome         + '\n' +
+      '🎂 *Idade:* '        + idade        + ' anos\n' +
+      '📍 *Cidade:* '       + cidade       + '\n' +
+      '💍 *Estado civil:* ' + estado_civil + '\n' +
+      '💼 *Profissão:* '    + profissao    + '\n\n' +
+      'Por favor, me envie a chave Pix para realizar o pagamento. 💛'
     );
 
-    // Exibe tela de sucesso
-    document.getElementById('form-section').style.display = 'none';
-    document.getElementById('success-section').style.display = 'block';
+    // Abre WhatsApp direto — sem trocar de tela
+    window.open('https://wa.me/' + WHATSAPP + '?text=' + msg, '_blank');
 
-    if (!salvo) showToast('Dados enviados ao WhatsApp. Falha ao salvar online.');
-
-    // Abre WhatsApp após breve delay
+    // Restaura o botão após abrir
     setTimeout(() => {
-      window.open('https://wa.me/' + WHATSAPP + '?text=' + msg, '_blank');
-    }, 700);
+      btn.classList.remove('pressed');
+      label.textContent = 'Finalizar minha inscrição';
+      btn.disabled = false;
+    }, 1500);
+
+    if (!salvo) showToast('Atenção: falha ao salvar no banco. Mensagem enviada ao WhatsApp.');
   });
 
   // Remove erro ao digitar
