@@ -9,7 +9,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -56,7 +56,7 @@
     /* Texto "Seu lugar foi preparado" */
     .tagline {
       font-family: 'Lato', sans-serif;
-      font-size: 26px;
+      font-size: 13px;
       letter-spacing: 1.5px;
       color: var(--verde);
       text-transform: uppercase;
@@ -73,7 +73,7 @@
 
     .ambiente p {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 40px;
+      font-size: 20px;
       font-weight: 700;
       font-style: italic;
       line-height: 1.9;
@@ -83,7 +83,7 @@
     }
 
     .ambiente strong {
-      font-weight: 700;
+      font-weight: 600;
       font-style: normal;
       color: var(--ouro);
       opacity: 1;
@@ -114,7 +114,7 @@
     .info-label {
       display: block;
       font-family: 'Lato', sans-serif;
-      font-size: 22px;
+      font-size: 11px;
       letter-spacing: 0.8px;
       text-transform: uppercase;
       color: var(--ouro);
@@ -122,11 +122,11 @@
     }
 
     .info-value {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
       font-weight: 700;
       color: var(--verde);
-      line-height: 1.2;
+      line-height: 1.25;
     }
 
     /* ── PILARES ── */
@@ -140,7 +140,7 @@
 
     .pillar {
       font-family: 'Lato', sans-serif;
-      font-size: 24px;
+      font-size: 12px;
       letter-spacing: 0.8px;
       text-transform: uppercase;
       color: var(--verde);
@@ -162,7 +162,9 @@
     .duvida {
       margin-top: 1rem;
       font-family: 'Lato', sans-serif;
-      font-size: 30px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
       color: var(--verde);
       opacity: 0.85;
     }
@@ -183,7 +185,7 @@
 
     .form-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 56px;
+      font-size: 28px;
       font-weight: 700;
       color: var(--verde);
       margin-bottom: 0.3rem;
@@ -191,7 +193,7 @@
 
     .form-sub {
       font-family: 'Lato', sans-serif;
-      font-size: 28px;
+      font-size: 14px;
       letter-spacing: 0.2px;
       color: var(--verde);
       opacity: 0.7;
@@ -205,14 +207,14 @@
     }
 
     .divider-line { flex: 1; height: 1px; background: var(--bege); }
-    .divider-star { color: var(--ouro); font-size: 28px; opacity: 0.8; }
+    .divider-star { color: var(--ouro); font-size: 14px; opacity: 0.8; }
 
     .field { margin-bottom: 1rem; }
 
     .field-label {
       display: block;
       font-family: 'Lato', sans-serif;
-      font-size: 24px;
+      font-size: 12px;
       letter-spacing: 0.5px;
       text-transform: uppercase;
       color: var(--verde);
@@ -226,8 +228,9 @@
       border: 1px solid var(--bege);
       border-radius: 8px;
       padding: 12px 16px;
-      font-family: 'Lato', sans-serif;
-      font-size: 34px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
       color: var(--verde);
       outline: none;
       transition: border-color 0.2s;
@@ -247,7 +250,7 @@
       transform: translateY(-50%);
       pointer-events: none;
       color: var(--ouro);
-      font-size: 26px;
+      font-size: 13px;
     }
 
     .row {
@@ -258,7 +261,7 @@
 
     .field-error {
       font-family: 'Lato', sans-serif;
-      font-size: 26px;
+      font-size: 13px;
       color: #993C1D;
       margin-top: 5px;
       display: none;
@@ -299,7 +302,7 @@
     .btn-ornament {
       display: block;
       font-family: 'Lato', sans-serif;
-      font-size: 24px;
+      font-size: 12px;
       letter-spacing: 1.0px;
       text-transform: uppercase;
       color: var(--ouro);
@@ -309,7 +312,7 @@
     .btn-label {
       display: block;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 52px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--creme);
       letter-spacing: 0.2px;
@@ -327,7 +330,7 @@
 
     .success-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 64px;
+      font-size: 32px;
       font-weight: 700;
       color: var(--verde);
       margin-bottom: 0.7rem;
@@ -335,7 +338,9 @@
 
     .success-text {
       font-family: 'Lato', sans-serif;
-      font-size: 32px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
       line-height: 1.85;
       color: var(--verde);
       opacity: 0.8;
@@ -351,7 +356,7 @@
 
     .footer-text {
       font-family: 'Lato', sans-serif;
-      font-size: 26px;
+      font-size: 13px;
       letter-spacing: 0.5px;
       color: var(--verde);
       opacity: 0.6;
@@ -368,7 +373,7 @@
       padding: 12px 24px;
       border-radius: 8px;
       font-family: 'Lato', sans-serif;
-      font-size: 26px;
+      font-size: 13px;
       transition: transform 0.3s ease;
       z-index: 999;
       white-space: nowrap;
@@ -385,8 +390,8 @@
       .form-section { padding: 1.6rem 1.2rem 1.4rem; }
       .row { grid-template-columns: 1fr; }
       .info-item { min-width: 70px; }
-      .info-value { font-size: 32px; }
-      .ambiente p { font-size: 38px; }
+      .info-value { font-size: 20px; }
+      .ambiente p { font-size: 19px; }
     }
   </style>
 </head>
