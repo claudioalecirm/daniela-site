@@ -2,6 +2,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/mulheresamesa", "destination": "/mulheresamesa.html" }
+    { "source": "/mulheresamesa", "destination": "/mulheresamesa.html" },
+    { "source": "/eleestavacomigo", "destination": "/eleestavacomigo.html" }
   ]
 }
