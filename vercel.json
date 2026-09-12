@@ -5,12 +5,13 @@
     { "source": "/jmr", "destination": "/jornada", "permanent": false },
     { "source": "/JMR", "destination": "/jornada", "permanent": false },
     { "source": "/Jornada", "destination": "/jornada", "permanent": false },
-    { "source": "/jmqr", "destination": "/JMQR", "permanent": false }
+    { "source": "/JMQR", "destination": "/jornada/obrigado", "permanent": false },
+    { "source": "/jmqr", "destination": "/jornada/obrigado", "permanent": false }
   ],
   "rewrites": [
     { "source": "/mulheresamesa", "destination": "/mulheresamesa.html" },
     { "source": "/eleestavacomigo", "destination": "/eleestavacomigo.html" },
     { "source": "/jornada", "destination": "/jornada.html" },
-    { "source": "/JMQR", "destination": "/JMQR.html" }
+    { "source": "/jornada/obrigado", "destination": "/jornada-obrigado.html" }
   ]
 }
