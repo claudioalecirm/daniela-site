@@ -2,14 +2,15 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/JMR", "destination": "/jmr", "permanent": false },
-    { "source": "/Jmr", "destination": "/jmr", "permanent": false },
+    { "source": "/jmr", "destination": "/jornada", "permanent": false },
+    { "source": "/JMR", "destination": "/jornada", "permanent": false },
+    { "source": "/Jornada", "destination": "/jornada", "permanent": false },
     { "source": "/jmqr", "destination": "/JMQR", "permanent": false }
   ],
   "rewrites": [
     { "source": "/mulheresamesa", "destination": "/mulheresamesa.html" },
     { "source": "/eleestavacomigo", "destination": "/eleestavacomigo.html" },
-    { "source": "/jmr", "destination": "/jmr.html" },
+    { "source": "/jornada", "destination": "/jornada.html" },
     { "source": "/JMQR", "destination": "/JMQR.html" }
   ]
 }
