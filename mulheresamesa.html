@@ -6,7 +6,7 @@
 <title>Mulheres à Mesa — 24 de outubro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#FBF1EF;
@@ -33,18 +33,18 @@
     text-align:center;
   }
   .brand{
-    font-family:'Cinzel', serif;
+    font-family:'Cormorant Garamond', serif;
     font-weight:600;
-    letter-spacing:0.14em;
+    letter-spacing:0.12em;
     color:var(--moss);
-    font-size:15px;
+    font-size:19px;
   }
   .brand span{color:var(--gold);}
   .edition{
     margin-top:10px;
     font-family:'Cormorant Garamond', serif;
     font-style:italic;
-    font-size:18px;
+    font-size:19px;
     color:#6b6350;
   }
 
@@ -57,7 +57,7 @@
     font-family:'Cormorant Garamond', serif;
     font-weight:500;
     font-style:italic;
-    font-size:clamp(28px, 5vw, 42px);
+    font-size:clamp(30px, 7vw, 44px);
     line-height:1.35;
     color:var(--moss-deep);
     max-width:620px;
@@ -73,26 +73,28 @@
     display:flex;
     justify-content:center;
     gap:0;
-    flex-wrap:wrap;
-    padding:0 24px 48px;
+    flex-wrap:nowrap;
+    padding:0 16px 48px;
   }
   .fact{
     text-align:center;
-    padding:0 28px;
+    padding:0 18px;
     border-left:1px solid var(--gold-soft);
+    flex:1 1 0;
+    min-width:0;
   }
   .fact:first-child{border-left:none;}
   .fact .label{
-    font-size:11px;
-    letter-spacing:0.12em;
+    font-size:12.5px;
+    letter-spacing:0.1em;
     color:var(--gold);
     font-weight:700;
     text-transform:uppercase;
   }
   .fact .value{
-    margin-top:6px;
+    margin-top:7px;
     font-family:'Montserrat', sans-serif;
-    font-size:18px;
+    font-size:21px;
     color:var(--ink);
     font-weight:700;
   }
@@ -108,7 +110,7 @@
     text-align:center;
     font-family:'Cormorant Garamond', serif;
     font-style:italic;
-    font-size:20px;
+    font-size:23px;
     color:#6b6350;
     margin-bottom:36px;
   }
@@ -133,15 +135,15 @@
   }
   .speaker .name{
     margin-top:18px;
-    font-family:'Cinzel', serif;
-    font-size:16px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:21px;
     font-weight:600;
     color:var(--moss-deep);
   }
   .speaker .role{
-    margin-top:4px;
-    font-size:12.5px;
-    letter-spacing:0.06em;
+    margin-top:5px;
+    font-size:14px;
+    letter-spacing:0.05em;
     color:var(--gold);
     text-transform:uppercase;
   }
@@ -152,8 +154,8 @@
     text-align:center;
   }
   .theme-block .eyebrow{
-    font-size:11px;
-    letter-spacing:0.14em;
+    font-size:12.5px;
+    letter-spacing:0.12em;
     color:var(--gold);
     font-weight:600;
     text-transform:uppercase;
@@ -161,8 +163,8 @@
   .theme-block p{
     margin-top:18px;
     font-family:'Cormorant Garamond', serif;
-    font-size:19px;
-    line-height:1.7;
+    font-size:21px;
+    line-height:1.75;
     color:var(--ink);
     max-width:580px;
     margin-left:auto;
@@ -180,9 +182,9 @@
     color:var(--cream);
     font-family:'Montserrat', sans-serif;
     font-weight:700;
-    font-size:16px;
-    letter-spacing:0.03em;
-    padding:20px 52px;
+    font-size:18px;
+    letter-spacing:0.02em;
+    padding:22px 52px;
     border-radius:4px;
     text-decoration:none;
     transition:background 0.2s ease, transform 0.2s ease;
@@ -194,22 +196,69 @@
   }
   .cta-note{
     margin-top:18px;
-    font-size:12.5px;
+    font-size:14px;
     color:#8a8266;
+  }
+
+  /* ---------- Lead form ---------- */
+  .lead-form{
+    max-width:380px;
+    margin:0 auto 28px;
+    text-align:left;
+  }
+  .lead-form label{
+    display:block;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .lead-form .field{
+    margin-bottom:18px;
+  }
+  .lead-form input{
+    width:100%;
+    font-family:'Montserrat', sans-serif;
+    font-size:16px;
+    color:var(--ink);
+    background:transparent;
+    border:none;
+    border-bottom:1.5px solid var(--gold-soft);
+    padding:8px 2px;
+    outline:none;
+    transition:border-color 0.2s ease;
+  }
+  .lead-form input:focus{
+    border-bottom-color:var(--moss);
+  }
+  .form-error{
+    display:none;
+    font-size:13px;
+    color:#a23b3b;
+    margin-top:-10px;
+    margin-bottom:16px;
+  }
+  .cta-btn[disabled]{
+    opacity:0.6;
+    cursor:default;
   }
 
   /* ---------- Footer ---------- */
   footer{
     text-align:center;
     padding:32px 24px 48px;
-    font-size:11.5px;
-    letter-spacing:0.08em;
+    font-size:13px;
+    letter-spacing:0.06em;
     color:#8a8266;
     text-transform:uppercase;
   }
 
-  @media (max-width: 480px){
-    .fact{padding:0 16px;}
+  @media (max-width: 400px){
+    .fact{padding:0 8px;}
+    .fact .value{font-size:18px;}
+    .fact .label{font-size:10.5px; letter-spacing:0.06em;}
     .speaker{width:150px;}
     .speaker img{width:140px; height:140px;}
   }
@@ -267,16 +316,69 @@
     </p>
   </div>
 
-  <div class="cta-section">
-    <a class="cta-btn" href="https://checkout.infinitepay.io/SEU-LINK-AQUI" id="checkout-link">
+  <div class="cta-section wrap">
+    <form class="lead-form" id="lead-form" novalidate>
+      <div class="field">
+        <label for="lead-nome">Seu nome</label>
+        <input type="text" id="lead-nome" name="nome" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="lead-telefone">Seu WhatsApp</label>
+        <input type="tel" id="lead-telefone" name="telefone" placeholder="(43) 99999-9999" autocomplete="tel" required>
+      </div>
+      <div class="form-error" id="lead-error">Preenche nome e WhatsApp para continuar.</div>
+    </form>
+    <button class="cta-btn" id="checkout-btn" type="button">
       Garantir minha vaga
-    </a>
+    </button>
     <div class="cta-note">Vagas limitadas — Cambé, 24 de outubro às 14h</div>
   </div>
 
   <footer>
     Mulheres à Mesa · 2ª Edição
   </footer>
+
+  <script>
+    const SUPABASE_URL = "https://bkuegmkpcasybistzogz.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJrdWVnbWtwY2FzeWJpc3R6b2d6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzNTM4MjIsImV4cCI6MjA5NzkyOTgyMn0.vV1yJ8vBScHQ-fQVxtur6eWywHAuJ25BeY2gEh-BKRM";
+    const CHECKOUT_URL = "https://checkout.infinitepay.io/danielamentora2026/Z4LHqcsRLp";
+
+    const btn = document.getElementById("checkout-btn");
+    const nomeInput = document.getElementById("lead-nome");
+    const telInput = document.getElementById("lead-telefone");
+    const errorEl = document.getElementById("lead-error");
+
+    btn.addEventListener("click", async function () {
+      const nome = nomeInput.value.trim();
+      const telefone = telInput.value.trim();
+
+      if (!nome || !telefone) {
+        errorEl.style.display = "block";
+        return;
+      }
+      errorEl.style.display = "none";
+
+      btn.disabled = true;
+      btn.textContent = "Só um instante...";
+
+      try {
+        await fetch(SUPABASE_URL + "/rest/v1/mam2_inscricoes", {
+          method: "POST",
+          headers: {
+            "apikey": SUPABASE_ANON_KEY,
+            "Authorization": "Bearer " + SUPABASE_ANON_KEY,
+            "Content-Type": "application/json",
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify({ nome: nome, telefone: telefone })
+        });
+      } catch (e) {
+        // Mesmo se o registro falhar, a mulher não pode ficar travada aqui.
+      }
+
+      window.location.href = CHECKOUT_URL;
+    });
+  </script>
 
 </body>
 </html>
