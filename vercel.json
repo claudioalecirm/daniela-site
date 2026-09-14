@@ -9,7 +9,8 @@
     { "source": "/jmqr", "destination": "/jornada/obrigado", "permanent": false }
   ],
   "rewrites": [
-    { "source": "/mulheresamesa", "destination": "/mulheresamesa.html" },
+    { "source": "/mulheresamesa", "destination": "/Mulheres-a-mesa/index.html" },
+    { "source": "/bem-vinda", "destination": "/Mulheres-a-mesa/bem-vinda.html" },
     { "source": "/eleestavacomigo", "destination": "/eleestavacomigo.html" },
     { "source": "/jornada", "destination": "/jornada.html" },
     { "source": "/jornada/obrigado", "destination": "/jornada-obrigado.html" }
